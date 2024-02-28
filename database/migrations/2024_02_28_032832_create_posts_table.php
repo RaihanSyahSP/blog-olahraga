@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText("body");
             $table->boolean("active")->default(true);
             $table->string("youtube_link", length:"2048")->nullable();
-            $table->dateTime("published_at");
+            $table->dateTime("published_at")->nullable();
             $table->foreignIdFor(\App\Models\User::class, column:"user_id");
             $table->timestamps();
         });

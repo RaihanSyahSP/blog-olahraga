@@ -11,6 +11,7 @@ use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -19,38 +20,44 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+    protected static ?string $navigationGroup = 'Content';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(2048)
-                    ->reactive()
-                    ->afterStateUpdated(function (Set $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(2048),
-                Forms\Components\TextInput::make('thumbnail')
-                    ->maxLength(2048),
-                Forms\Components\Textarea::make('body')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\Toggle::make('active')
-                    ->required(),
-                Forms\Components\TextInput::make('youtube_link')
-                    ->maxLength(2048),
-                Forms\Components\DateTimePicker::make('published_at')
-                    ->required(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
+                Forms\Components\Card::make('Tambah Post')->schema([
+                    Forms\Components\Grid::make(2)->schema([
+                        Forms\Components\TextInput::make('title')
+                        ->required()
+                            ->maxLength(2048)
+                            ->reactive()
+                            ->afterStateUpdated(function (Set $set, $state) {
+                                $set('slug', Str::slug($state));
+                            }),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(2048),
+                    ]),
+                    Forms\Components\FileUpload::make('thumbnail'),
+                    Forms\Components\RichEditor::make('body')
+                        ->required()
+                        ->columnSpanFull(),
+                    Forms\Components\Toggle::make('active')
+                        ->required(),
+                    Forms\Components\TextInput::make('youtube_link')
+                        ->maxLength(2048),
+                    Forms\Components\DateTimePicker::make('published_at')->required(),
+                    Forms\Components\Select::make('category_id')
+                        ->multiple()
+                        ->relationship('categories', 'title')
+                        ->required(),
+                ])
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
@@ -60,7 +67,7 @@ class PostResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('thumbnail')
+                Tables\Columns\ImageColumn::make('thumbnail')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
