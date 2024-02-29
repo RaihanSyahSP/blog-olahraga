@@ -15,10 +15,10 @@ class PostController extends Controller
     public function index(): View
     {
         $posts = Post::query()
-                ->where("active" ,"=" , 1)
-                // ->where('published_at', '<', Carbon::now())
-                ->orderBy("published_at", "desc")
-                ->paginate();
+            ->where("active", "=", 1)
+            // ->where('published_at', '<', Carbon::now())
+            ->orderBy("published_at", "desc")
+            ->paginate();
 
         return view('home', compact('posts'));
     }
@@ -42,9 +42,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        //
+        $post = Post::query()->where('slug', '=', $slug)->first();
+        if (!$post) {
+            abort(404);
+        }
+        return view('post', compact('post'));
     }
 
     /**

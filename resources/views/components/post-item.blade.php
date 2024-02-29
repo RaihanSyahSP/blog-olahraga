@@ -17,8 +17,8 @@
                             {{ $post->getFormattedDate()}}
                         </p>
                         <a href="#" class="pb-6">
-                            {{ $post-> shortBody() }}
+                            {{ $post->shortBody() }}
                         </a>
-                        <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                        <a href="/post/{{ $post->slug }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>

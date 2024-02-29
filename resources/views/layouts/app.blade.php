@@ -8,6 +8,8 @@
     <meta name="author" content="">
     <meta name="description" content="">
 
+    <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
+
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
@@ -57,7 +59,7 @@
     <!-- Text Header -->
     <header class="w-full container mx-auto">
         <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
+            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="/">
                 Minimal Blog
             </a>
             <p class="text-lg text-gray-600">
