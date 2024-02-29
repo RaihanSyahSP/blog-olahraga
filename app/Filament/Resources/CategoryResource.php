@@ -31,7 +31,8 @@ class CategoryResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(2048)
-                    ->reactive()
+                    ->live(onBlur: true)
+                    ->debounce(1000)
                     ->afterStateUpdated(function (Set $set, $state) {
                         $set('slug', Str::slug($state));
                     }),

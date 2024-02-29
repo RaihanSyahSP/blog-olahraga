@@ -31,9 +31,10 @@ class PostResource extends Resource
                 Forms\Components\Card::make('Tambah Post')->schema([
                     Forms\Components\Grid::make(2)->schema([
                         Forms\Components\TextInput::make('title')
-                        ->required()
+                            ->required()
                             ->maxLength(2048)
-                            ->reactive()
+                            ->live(onBlur: true)
+                            ->debounce(1000)
                             ->afterStateUpdated(function (Set $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
