@@ -8,17 +8,19 @@
     <meta name="author" content="">
     <meta name="description" content="">
 
-    <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
-
+    <link href="{{URL::asset('css/filament/filament/app.css')}}" rel="stylesheet">
+    
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
+        
         .font-family-karla {
             font-family: karla;
         }
     </style>
+
+    <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
