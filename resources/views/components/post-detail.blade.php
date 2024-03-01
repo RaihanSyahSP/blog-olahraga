@@ -1,6 +1,7 @@
 <article class="flex flex-col shadow my-4 w-full">
     <!-- Article Image -->
-    <a href="/storage/{{ $post->thumbnail }}" class="hover:opacity-75">
+    <a data-lightbox="thumbnail" data-title="{{ $post->title }}" href="/storage/{{ $post->thumbnail }}"
+        class="hover:opacity-75">
         <img src="/storage/{{ $post->thumbnail }}" />
     </a>
     <div class="bg-white flex flex-col justify-start p-6">

@@ -26,6 +26,9 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <!-- Lightbox2 -->
+    <link href="{{URL::asset('lightbox2/dist/css/lightbox.min.css')}}" rel="stylesheet"/>
+    <script src="{{URL::asset('lightbox2/dist/js/lightbox-plus-jquery.min.js')}}"></script>
 </head>
 <body class="bg-white font-family-karla">
 
@@ -112,15 +115,33 @@
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">Instagram</p>
                 <div class="grid grid-cols-3 gap-3">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=1">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=2">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=3">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=4">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=5">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=6">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=https://source.unsplash.com/collection/1346951/150x150?sig=7">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=8">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
+                    </a>
+                    <a href="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+                        <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+                    </a>
                 </div>
                 <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
                     <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
@@ -185,6 +206,12 @@
             }
         }
     </script>
-
+    <script>
+        console.log(lightbox)
+        lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+        })
+    </script>
 </body>
 </html>
