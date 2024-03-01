@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Olahraga</title>
-    <meta name="author" content="blog olahraga">
-    <meta name="description" content="blog olahraga">
+    <title>{{ $title ?? 'Blog Olahraga' }}</title>
+    <meta name="author" content="@yield('metaAuthor')">
+    <meta name="description" content="@yield('metaDescription')">
 
     <link href="{{URL::asset('css/filament/filament/app.css')}}" rel="stylesheet">
     
@@ -26,6 +26,9 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <!-- Lightbox2 -->
+    <link href="{{URL::asset('lightbox2/dist/css/lightbox.min.css')}}" rel="stylesheet"/>
+    <script src="{{URL::asset('lightbox2/dist/js/lightbox-plus-jquery.min.js')}}"></script>
 </head>
 <body class="bg-gray-50 bg-white font-family-karla">
 
@@ -103,5 +106,37 @@
             <div class="uppercase pb-6">&copy; myblog.com</div>
         </div>
     </footer>
+
+    <script>
+        function getCarouselData() {
+            return {
+                currentIndex: 0,
+                images: [
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
+                ],
+                increment() {
+                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
+                },
+                decrement() {
+                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
+                },
+            }
+        }
+    </script>
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'disableScrolling': true,
+        })
+        
+    </script>
 </body>
 </html>
