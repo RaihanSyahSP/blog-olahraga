@@ -1,8 +1,8 @@
 <article class="flex flex-col shadow my-4 w-full">
     <!-- Article Image -->
-    <a data-lightbox="thumbnail" data-title="{{ $post->title }}" href="/storage/{{ $post->thumbnail }}"
+    <a data-lightbox="thumbnail" data-title="{{ $post->title }}" href="{{ $post->getThumbnail() }}"
         class="hover:opacity-75">
-        <img src="/storage/{{ $post->thumbnail }}" />
+        <img src="{{ $post->getThumbnail() }}" />
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
         <div class="flex gap-4">
