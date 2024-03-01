@@ -207,11 +207,11 @@
         }
     </script>
     <script>
-        console.log(lightbox)
         lightbox.option({
-        'resizeDuration': 200,
-        'wrapAround': true
+            'resizeDuration': 200,
+            'disableScrolling': true,
         })
+        
     </script>
 </body>
 </html>
