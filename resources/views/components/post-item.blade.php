@@ -1,7 +1,8 @@
+                
                 <article class="flex flex-col shadow my-4">
                     <!-- Article Image -->
-                    <a href="#" class="hover:opacity-75">
-                        <img src="/storage/{{ $post->thumbnail }}">
+                    <a href="/post/{{ $post->slug }}" class="hover:opacity-75">
+                        <img src="{{ $post->getThumbnail() }}">
                     </a>
                     <div class="bg-white flex flex-col justify-start p-6">
                         @foreach ($post->categories as $category)
