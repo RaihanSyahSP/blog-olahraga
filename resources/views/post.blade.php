@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot:title>
+        {{ $post->title }}
+    </x-slot>
+    @section('metaAuthor', e($post->user->name))
+    @section('metaDescription', e($post->shortBody()))
     <!-- Post Section -->
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
         <x-post-detail :post="$post" />

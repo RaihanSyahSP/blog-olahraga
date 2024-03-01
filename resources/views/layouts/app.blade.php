@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
+    <title>{{ $title ?? 'Blog Olahraga' }}</title>
+    <meta name="author" content="@yield('metaAuthor')">
+    <meta name="description" content="@yield('metaDescription')">
 
     <link href="{{URL::asset('css/filament/filament/app.css')}}" rel="stylesheet">
     
