@@ -21,27 +21,28 @@ class TextWidget extends Model
 
     public static function getTitle(string $key): string
     {
-        $widget = TextWidget::query()->where('key', $key)->first();
+        $widget = Cache::get('text-widget-' . $key, function () use ($key) {
+            return TextWidget::query()->where('key', "=", $key)->where('active', '=', 1)->first();
+        });
 
-        if (!$widget) {
-            return '';
+        if ($widget) {
+            return $widget->title;
         }
-
-        return $widget->title;
+        dd($widget);
+        return "";
     }
-
 
 
     public static function getContent(string $key): string
     {
         $widget = Cache::get('text-widget-' . $key, function () use ($key) {
-            return TextWidget::query()->where('key', $key)->first();
+            return TextWidget::query()->where('key',"=",$key)->where('active', '=', 1)->first();
         });
 
-        if (!$widget) {
-            return '';
+        if ($widget) {
+            return $widget->content;
         }
 
-        return $widget->content;
+        return "";
     }
 }
