@@ -6,6 +6,7 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
@@ -42,13 +43,27 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug)
+    public function show(Post $post)
     {
-        $post = Post::query()->where('slug', '=', $slug)->first();
-        if (!$post) {
-            abort(404);
+        if (!$post->active) {
+            throw new NotFoundHttpException();
         }
-        return view('post', compact('post'));
+
+        $next = Post::query()
+            ->where('active', true)
+            ->where('id', '<', $post->id)
+            ->orderBy('id', 'desc')
+            ->limit(1)
+            ->first();
+
+        $prev = Post::query()
+            ->where('active', true)
+            ->where('id', '>', $post->id)
+            ->orderBy('id', 'asc')
+            ->limit(1)
+            ->first();
+
+        return view('post', compact('post', 'prev', 'next'));
     }
 
     /**

@@ -1,4 +1,4 @@
-<article class="flex flex-col shadow my-4">
+<article class="flex flex-col shadow my-4 w-full">
     <!-- Article Image -->
     <a href="/storage/{{ $post->thumbnail }}" class="hover:opacity-75">
         <img src="/storage/{{ $post->thumbnail }}" />
